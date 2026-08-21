@@ -1,0 +1,6 @@
+pibby-env/
+__pycache__/
+*.pyc
+data/
+models/*.pt
+.vscode/
