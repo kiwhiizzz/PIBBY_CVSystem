@@ -19,6 +19,7 @@ def list_images_class(base_path):
 
     return images_data, labels_data
 
+#hola prueba
 IMG_SIZE = 224
 
 def load_resize_image(image_path):
