@@ -1,15 +1,7 @@
 import os 
 import cv2
 
-IMG_SIZE = 224
-
-EMOTION_LABELS = {
-    "happy" : 0,
-    "sad" : 1,
-    "neutral" : 2,
-    "angry" :  3,
-    "fear" : 4,
-}
+from src.utils.config import IMG_SIZE, EMOTION_LABELS
 
 def list_images_class(base_path):
     classes = os.listdir(base_path)
