@@ -7,3 +7,6 @@ EMOTION_LABELS = {
     "angry" :  3,
     "fear" : 4,
 }
+
+NEAR_LIMIT= 0.5
+FAR_LIMIT = 1.5
