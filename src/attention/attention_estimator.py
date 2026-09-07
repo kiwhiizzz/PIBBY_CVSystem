@@ -1,3 +1,4 @@
+from src.utils.config import NEAR_LIMIT, FAR_LIMIT
 def calculate_face_center(bbox):
     center_x = (bbox["x1"] + bbox["x2"]) / 2
     center_y = (bbox["y1"] + bbox["y2"]) / 2
@@ -17,9 +18,23 @@ def look_at_camera(bbox, frame_width, frame_height, tolerance = 0.2):
 
     return offset_x <= max_offset_x and offset_y <= max_offset_y
 
-def estimate_attention(bbox, frame_width, frame_height):
+def calculate_distance(distance):
+
+    if distance < NEAR_LIMIT:
+        return "near"
+    
+    elif distance > FAR_LIMIT:
+        return "far"
+    
+    else:
+        return "middle"
+
+def estimate_attention(bbox, frame_width, frame_height, distance):
     attentive = look_at_camera(bbox, frame_width, frame_height)
+    distance_level = calculate_distance(distance)
+
 
     return {
-        "attentive" : attentive
+        "attentive" : attentive,
+        "distance" : distance_level
     }
