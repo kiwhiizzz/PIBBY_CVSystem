@@ -1,6 +1,8 @@
 import os 
 import cv2
 
+from src.utils.config import IMG_SIZE, EMOTION_LABELS
+
 def list_images_class(base_path):
     classes = os.listdir(base_path)
 
@@ -10,17 +12,20 @@ def list_images_class(base_path):
     for class_name in classes:
         class_folder = os.path.join(base_path, class_name)
         image_names = os.listdir(class_folder)
+
+        if class_name not in EMOTION_LABELS:
+            continue;
+
+        label  = EMOTION_LABELS[class_name]
+
         for image_name in image_names:
             image_path = os.path.join(class_folder, image_name)
             image = load_resize_image(image_path)
 
             images_data.append(image)
-            labels_data.append(class_name)
+            labels_data.append(label)
 
     return images_data, labels_data
-
-#hola prueba
-IMG_SIZE = 224
 
 def load_resize_image(image_path):
     image = cv2.imread(image_path)
