@@ -31,3 +31,5 @@ def load_resize_image(image_path):
     image = cv2.imread(image_path)
     image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
     return image
+
+#hola puchaina
