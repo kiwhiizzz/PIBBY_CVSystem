@@ -47,7 +47,7 @@ def build_model(num_classes = 5):
     return model
 
 def train_model(model, train_loader, epochs, learning_rate):
-    device = torch.device("CUDA" if torch.cuda.is_available() else "CPU")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
     criterion = nn.CrossEntropyLoss()
@@ -59,10 +59,11 @@ def train_model(model, train_loader, epochs, learning_rate):
 
         for images, labels in train_loader:
             images = images.to(device)
-            labels = images.to(device)
+            labels = labels.to(device)
 
             optimazer.zero_grad()
             outputs = model(images)
+            print(images.shape, labels.shape, labels.dtype)
             loss = criterion(outputs, labels)
             loss.backward()
             optimazer.step()
@@ -79,7 +80,7 @@ def main():
     images, labels = list_images_class(TRAINING_DATA_PATH)
     print(f"Images uploeaded: {len(images)}")
 
-    train_loader = set_dataloader(images, labels, batch_size = BATCH_SIZE, suffle = True)
+    train_loader = set_dataloader(images, labels, batch_size = BATCH_SIZE, shuffle = True)
 
     model = build_model(num_classes = len(EMOTION_LABELS))
     model = train_model(model, train_loader, epochs = EPOCHS, learning_rate = LEARNING_RATE)
