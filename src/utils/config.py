@@ -18,3 +18,4 @@ BATCH_SIZE = 32
 
 #Paths
 TRAINING_DATA_PATH = "data/processed/train"
+MODEL_PATH = "models/fer_model_20261016_1859.pt"

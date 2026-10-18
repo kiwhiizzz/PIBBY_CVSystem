@@ -55,7 +55,7 @@ def train_model(model, train_loader, epochs, learning_rate):
 
     for epoch in range(epochs):
         model.train()
-        running_loses = 0.0
+        running_loss = 0.0
 
         for images, labels in train_loader:
             images = images.to(device)
@@ -63,14 +63,13 @@ def train_model(model, train_loader, epochs, learning_rate):
 
             optimazer.zero_grad()
             outputs = model(images)
-            print(images.shape, labels.shape, labels.dtype)
             loss = criterion(outputs, labels)
             loss.backward()
             optimazer.step()
 
             running_loss += loss.item()
 
-        avg_loss = running_loses / len(train_loader)
+        avg_loss = running_loss / len(train_loader)
         print(f"Epoch: {epoch + 1} / {epochs} - Loss: {avg_loss:.4f}")
 
     return model
@@ -85,7 +84,7 @@ def main():
     model = build_model(num_classes = len(EMOTION_LABELS))
     model = train_model(model, train_loader, epochs = EPOCHS, learning_rate = LEARNING_RATE)
 
-    os.makedirs(models, exist_ok = True)
+    os.makedirs("models", exist_ok = True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M")
     model_path = f"models/fer_model_{timestamp}.pt"
     torch.save(model.state_dict(), model_path)
