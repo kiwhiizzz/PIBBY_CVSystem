@@ -1,2 +1,3 @@
 Path: models/fer_model_20261016_1859.pt | Images: 800 | Epochs: 20 | lr: 0.001 | batch: 32
-Evaluación | models/fer_model_20261016_1859.pt | test: 200Aciertos: 139 | exactitud: 69.5% | date: 2026-10-18 00:14
+Evaluación | models/fer_model_20261016_1859.pt | test: 200 | Aciertos: 139 | exactitud: 69.5% | date: 2026-10-18 00:14
+YOLOv8-cls | C:\Users\KIARA\Documents\Proyectos-CEDIM\PIBBY_CVSystem\runs\classify\yolo_cls_20261019_1401\weights\best.pt | Epochs: 50 | batch: 12 | exactitud: 80.0% | date: 2026-10-19 14:06

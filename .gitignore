@@ -5,3 +5,4 @@ data/
 models/*.pt
 *.pt
 .vscode/
+runs/

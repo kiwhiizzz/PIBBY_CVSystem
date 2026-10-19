@@ -35,7 +35,7 @@ def main():
     images, labels = list_images_class("data/processed/test")
     test_loader = set_dataloader(images, labels, batch_size = 32, shuffle = False)
 
-    model, device = load_trained_model("models/fer_model_20261016_1859.pt")
+    model, device = load_trained_model(MODEL_PATH)
     preds, true_labels = get_predictions(model, device, test_loader)
 
     total = len(true_labels);
@@ -48,7 +48,7 @@ def main():
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M")
     with open("models/registro.txt", "a", encoding = "utf-8") as f:
         f.write(
-            f"Evaluación | {MODEL_PATH} | test: {total}"
+            f"Evaluación | {MODEL_PATH} | test: {total} |"
             f"Aciertos: {correct} | exactitud: {accuracy:.1%} | date: {fecha}\n"
         )
     print("Resultados agregado al registro")
