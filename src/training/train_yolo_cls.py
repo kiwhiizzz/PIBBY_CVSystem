@@ -22,13 +22,14 @@ def main():
     )
 
     best_path = str(model.trainer.best)
+    run_folder = os.path.basename(os.path.dirname(os.path.dirname(best_path)))
     top1 = results.top1
 
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M")
     os.makedirs("models", exist_ok=True)
     with open("models/registro.txt", "a", encoding="utf-8") as f:
         f.write(
-            f"YOLOv8-cls | {best_path} | Epochs: {EPOCHS} | batch: {BATCH_SIZE} | "
+            f"YOLOv8-cls | {run_folder} | Epochs: {EPOCHS} | batch: {BATCH_SIZE} | \n"
             f"exactitud: {top1:.1%} | date: {fecha}\n"
         )
 
